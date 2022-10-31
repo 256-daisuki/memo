@@ -11,6 +11,7 @@
             height: 100%;
             margin: 0;
         }
+
         .main {
             padding-left: 10vw;
             width: 100%;
@@ -19,7 +20,20 @@
             font-weight: 100;
             padding: 10px;
             outline: none;
+            color            : #000000;      /* 文字の色 */
+            font-size        : 18pt;         /* 文字のサイズ */
         }
+
+        .main::-moz-selection {
+            color            : #ffffff;      /* 選択時の文字色 */
+            background: #b993d6;
+        }
+
+        .main::selection {
+            color            : #ffffff;      /* 選択時の文字色 */
+            background: #b993d6;
+        }
+
         .title {
             /*margin-left: 5vw; */
             margin-left: 1%;
@@ -33,11 +47,13 @@
             width: 30%;
             height: 1em;
         }
+
         .counter {
             text-align: right;
             width: 5em;
             margin: 0;
         }
+
         th {
             font-weight: normal;
         }
@@ -53,17 +69,24 @@
             a.download = title; //ダウンロードしたメモの名前
             a.click();
         };
+
         function ShowLength( str ) { //文字数のカウント
             document.getElementById("inputlength").innerHTML = str.length + "文字";
+        }
+
+        function deleteText() {
+            let ta2 = document.getElementById("main");
+            ta2.value = "";
         }
     </script>
 </head>
 <body>
     <table>
         <th><button onclick="save();">保存</button></th>
+        <th><button value="削除" onclick="deleteText();">削除</button></th>
         <th><p class="counter" id="inputlength">0文字</p></th>
     </table>
     <textarea class="title" id="title" cols="1" role="1" placeholder="タイトル"></textarea>
-    <textarea class="main" id="main" onmouseover="barHide();" cols="50" rows="5" onkeyup="ShowLength(value);" placeholder="ここにメモ"></textarea>
+    <textarea class="main" id="main" onmouseover="barHide();" cols="64" rows="256" onkeyup="ShowLength(value);" placeholder="ここにメモ"></textarea>
 </body>
 </html>
