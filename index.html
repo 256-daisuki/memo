@@ -82,6 +82,9 @@
         let y = 100;
         function larger()  { y *= 1.2; document.getElementById("main").style.fontSize = y + '%'; }
         function smaller() { y /= 1.2; document.getElementById("main").style.fontSize = y + '%'; }
+        
+        const selectedText = window.getSelection().toString();
+        console.log(selectedText);
     </script>
 </head>
 <body>
@@ -90,6 +93,7 @@
         <th><button value="削除" onclick="deleteText();">削除</button></th>
         <th><button onclick="smaller()">文字サイズを小さくする</button></th>
         <th><button onclick="larger()">文字サイズを大きくする</button></th>
+        <th><button ></button></th>
         <th><p class="counter" id="inputlength">0文字</p></th>
     </table>
     <textarea class="title" id="title" cols="1" role="1" placeholder="タイトル"></textarea>
