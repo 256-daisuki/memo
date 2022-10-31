@@ -1,12 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>256memo</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .main {
+            padding-left: 10vw;
+            width: 100%;
+            border: none;
+            font-size: 30px;
+            font-weight: 100;
+            padding: 10px;
+            outline: none;
+        }
+        .title {
+            /*margin-left: 5vw; */
+            margin-left: 1%;
+            padding: 0;
+            width: 90%;
+            border: 1px solid #ccc; /* 枠線 */
+            background-color: #fff; /* 背景色 */
+            box-shadow: 1px 1px 2px #ccc;
+            font-size: 3em;
+            resize: none;
+            width: 30%;
+            height: 1em;
+        }
+        .counter {
+            text-align: right;
+            width: 5em;
+            margin: 0;
+        }
+        th {
+            font-weight: normal;
+        }
+        </style>
+    <script>
+        function save() { // ここはダウンロード関係
+            const txt = document.getElementById('main').value; // テキストエリアより文字列を取得
+            if (!txt) { return; }
+            const blob = new Blob([txt], { type: 'text/plain' }); // 文字列をBlob化
+            const a = document.createElement('a'); // ダウンロード用のaタグ生成
+            a.href =  URL.createObjectURL(blob);
+            const title = document.getElementById('title').value; // タイトルより文字列を取得
+            a.download = title; //ダウンロードしたメモの名前
+            a.click();
+        };
+        function ShowLength( str ) { //文字数のカウント
+            document.getElementById("inputlength").innerHTML = str.length + "文字";
+        }
+    </script>
 </head>
 <body>
-    
+    <table>
+        <th><button onclick="save();">保存</button></th>
+        <th><p class="counter" id="inputlength">0文字</p></th>
+    </table>
+    <textarea class="title" id="title" cols="1" role="1" placeholder="タイトル"></textarea>
+    <textarea class="main" id="main" onmouseover="barHide();" cols="50" rows="5" onkeyup="ShowLength(value);" placeholder="ここにメモ"></textarea>
 </body>
 </html>
