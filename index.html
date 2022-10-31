@@ -57,9 +57,9 @@
         th {
             font-weight: normal;
         }
-        </style>
+    </style>
     <script>
-        function save() { // ここはダウンロード関係
+        function save() { // ダウンロード
             const txt = document.getElementById('main').value; // テキストエリアより文字列を取得
             if (!txt) { return; }
             const blob = new Blob([txt], { type: 'text/plain' }); // 文字列をBlob化
@@ -74,16 +74,22 @@
             document.getElementById("inputlength").innerHTML = str.length + "文字";
         }
 
-        function deleteText() {
+        function deleteText() { //文字の削除
             let ta2 = document.getElementById("main");
             ta2.value = "";
         }
+
+        let y = 100;
+        function larger()  { y *= 1.2; document.getElementById("main").style.fontSize = y + '%'; }
+        function smaller() { y /= 1.2; document.getElementById("main").style.fontSize = y + '%'; }
     </script>
 </head>
 <body>
     <table>
         <th><button onclick="save();">保存</button></th>
         <th><button value="削除" onclick="deleteText();">削除</button></th>
+        <th><button onclick="smaller()">文字サイズを小さくする</button></th>
+        <th><button onclick="larger()">文字サイズを大きくする</button></th>
         <th><p class="counter" id="inputlength">0文字</p></th>
     </table>
     <textarea class="title" id="title" cols="1" role="1" placeholder="タイトル"></textarea>
