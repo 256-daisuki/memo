@@ -10,7 +10,7 @@
         body {
             width: 95%;
             height: 95%;
-            margin: 0;o
+            margin: 0;
         }
 
         .main {
@@ -124,7 +124,7 @@
     <textarea class="title" id="title" cols="1" placeholder="タイトル"></textarea>
     <form name="in">
         <input type="file" name="select" id="select" onchange="selectFile()" onclick="OnButtonClick();" />
-        <textarea class="main" id="main" cols="64" rows="256" onkeyup="ShowLength(value);" placeholder="ここにメモ"></textarea>
+        <textarea class="main" id="main" cols="64" rows="9999" onkeyup="ShowLength(value);" placeholder="ここにメモ"></textarea>
     </form>
     <script>
         document.querySelectorAll(".main").forEach(function(){
