@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>256memo</title>
-    <style>
+    <style> /*CSS系（これは全部で256行を目指しているから一緒にしてる）*/
         body {
             width: 95%;
             height: 95%;
@@ -28,12 +28,12 @@
         }
 
         .main::-moz-selection {
-            color            : #ffffff;      /* 選択時の文字色 */
+            color : #ffffff;      /* 選択時の文字色 */
             background: #b993d6;
         }
 
         .main::selection {
-            color            : #ffffff;      /* 選択時の文字色 */
+            color : #ffffff;      /* 選択時の文字色 */
             background: #b993d6;
         }
 
@@ -78,13 +78,17 @@
             // テキストエリアより文字列を取得
             const txt = document.getElementById('main').value; 
             if (!txt) { return; }
+
             // 文字列をBlob化
             const blob = new Blob([txt], { type: 'text/plain' }); 
+
             // ダウンロード用のaタグ生成
             const a = document.createElement('a'); 
             a.href =  URL.createObjectURL(blob);
+
             // タイトルより文字列を取得
             const title = document.getElementById('title').value; 
+
             //ダウンロードしたメモの名前
             a.download = title; 
             a.click();
@@ -165,9 +169,7 @@
 
         //ロード系
         var form = document.forms.in;
- 
         form.select.addEventListener( 'change', function(e) {
-
             var result = e.target.files[0];
 
             //FileReaderのインスタンスを作成する
@@ -191,15 +193,13 @@
             }
         })
 
-        //inputをbuttonと同じように扱えるようにするやつ
+        //inputをbuttonと同じように扱えるようにする
 		const fileButton = document.getElementById("select");
 		const testImgButton = document.getElementById("testImg");
 		testImgButton.addEventListener("click",function(){
 			console.log(fileButton);
 			fileButton.click();
 		},false)
-
-        
     </script>
 </body>
 </html>
