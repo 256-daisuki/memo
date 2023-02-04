@@ -75,13 +75,18 @@
     <script>
         // ダウンロード
         function save() { 
-            const txt = document.getElementById('main').value; // テキストエリアより文字列を取得
+            // テキストエリアより文字列を取得
+            const txt = document.getElementById('main').value; 
             if (!txt) { return; }
-            const blob = new Blob([txt], { type: 'text/plain' }); // 文字列をBlob化
-            const a = document.createElement('a'); // ダウンロード用のaタグ生成
+            // 文字列をBlob化
+            const blob = new Blob([txt], { type: 'text/plain' }); 
+            // ダウンロード用のaタグ生成
+            const a = document.createElement('a'); 
             a.href =  URL.createObjectURL(blob);
-            const title = document.getElementById('title').value; // タイトルより文字列を取得
-            a.download = title; //ダウンロードしたメモの名前
+            // タイトルより文字列を取得
+            const title = document.getElementById('title').value; 
+            //ダウンロードしたメモの名前
+            a.download = title; 
             a.click();
         };
 
